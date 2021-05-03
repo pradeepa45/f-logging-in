@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUp from './SignUp';
+import { Menu } from 'semantic-ui-react';
+import LogIn from './LogIn';
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
+import { Component } from 'react';
+import HomePage from './HomePage';
+import ErrorPage from './Error'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default class App extends Component {
+  state = { activeItem: 'signup' }
+  state = {
+
+  }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
+    return (
+
+      <Router>
+        <Menu secondary size='huge' inverted color='red'>
+          <Menu.Item as={NavLink} to='/signup'
+            name='sign up'
+            active={activeItem === 'signup'}
+            onClick={this.handleItemClick}
+
+          />
+          <Menu.Item as={NavLink} to='/login'
+            name='log in'
+            active={activeItem === 'login'}
+            onClick={this.handleItemClick}
+          />
+        </Menu>
+
+        <Route
+          path='/signup'
+          exact
+          render={() => {
+            return (
+              <SignUp />
+            );
+          }}
+        />
+
+        <Route
+          path='/login'
+          exact
+          render={() => {
+            return (
+              <LogIn />
+            );
+          }}
+        />
+
+        
+
+        <Route
+        exact
+          path='/home'
+          render={() => {
+            return (
+              <HomePage />
+            );
+          }}
+        />
+      </Router>
+    )
+  }
 }
-
-export default App;

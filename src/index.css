@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#cont{
+  padding: 60px;
+  margin: 100px;
+}
+
+#main-body{
+  background-image: url('download.png');
+  background-position: fixed;
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
+}
+
+.showing{
+  display: block;
+}
+
+.hiding{
+  display: none;
+}
