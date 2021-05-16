@@ -21,13 +21,13 @@ export default class App extends Component {
 
       <Router>
         <Menu secondary size='huge' inverted color='red'>
-          <Menu.Item as={NavLink} to='/signup'
+          <Menu.Item as={NavLink} to='/f-logging-in/signup/'
             name='sign up'
             active={activeItem === 'signup'}
             onClick={this.handleItemClick}
 
           />
-          <Menu.Item as={NavLink} to='/login'
+          <Menu.Item as={NavLink} to='/f-logging-in/login'
             name='log in'
             active={activeItem === 'login'}
             onClick={this.handleItemClick}
@@ -35,7 +35,7 @@ export default class App extends Component {
         </Menu>
 
         <Route
-          path='/signup'
+          path='/f-logging-in/signup'
           exact
           render={() => {
             return (
@@ -45,7 +45,7 @@ export default class App extends Component {
         />
 
         <Route
-          path='/login'
+          path='/f-logging-in/login'
           exact
           render={() => {
             return (
