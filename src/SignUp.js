@@ -9,8 +9,6 @@ const initialFormData = {
     email: "",
     password: ""
 };
-
-
 const reducer = (currentFormState, action) => {
     switch (action.type) {
         case "HANDLE_INPUT":
@@ -38,21 +36,49 @@ const SignUp = () => {
         // console.log(e);
     };
 
-    const clearForm = (e)=>{
+    const clearForm = (e) => {
         // console.log(e);
         e.target.form.reset();
 
     }
 
     const handleUserInfo = (e) => {
-        let userInfo = [];
-        console.log("fname: ", e.target.form[0].value);
-        console.log("lname: ", e.target.form[1].value);
-        console.log("email: ", e.target.form[2].value);
-        console.log("password: ", e.target.form[3].value);
+        // let userInfo = [];
+        // console.log("fname: ", e.target.form[0].value);
+        // console.log("lname: ", e.target.form[1].value);
+        // console.log("email: ", e.target.form[2].value);
+        // console.log("password: ", e.target.form[3].value);
         if (localStorage.getItem(e.target.form[2].value) == null) {
-            userInfo.push(e.target.form[0].value, e.target.form[1].value, e.target.form[3].value);
-            localStorage.setItem(e.target.form[2].value, userInfo);
+            // var newUser = {
+            //     fname: e.target.form[0].value,
+            //     lname: e.target.form[1].value,
+            //     email: e.target.form[2].value,
+            //     password: e.target.form[3].value
+            // }
+            // userInfo.push(e.target.form[0].value, e.target.form[1].value, e.target.form[3].value);
+            // localStorage.setItem(e.target.form[2].value, userInfo);
+            // sendData(newUser);
+            fetch('https://pradeepa45.github.io/signup', {
+                method: 'POST',
+                body: JSON.stringify({
+                    firstName : e.target.form[0].value,
+                    lastName : e.target.form[1].value,
+                    email : e.target.form[2].value,
+                    password : e.target.form[3].value
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            }).then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                return Promise.reject(response);
+            }).then(function (data) {
+                console.log(data);
+            }).catch(function (error) {
+                console.warn('Something went wrong.', error);
+            });
         }
         else {
             alert("There has been an error! There exists an account witht the email address ", e.target.form[2].value, "already..");
