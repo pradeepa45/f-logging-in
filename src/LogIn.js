@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form, Input, Button, Icon, Segment, Message } from 'semantic-ui-react'
 import $ from 'jquery';
 

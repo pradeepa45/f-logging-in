@@ -4,7 +4,7 @@ import LogIn from './LogIn';
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import { Component } from 'react';
 import HomePage from './HomePage';
-import ErrorPage from './Error'
+// import ErrorPage from './Error'
 
 
 export default class App extends Component {
