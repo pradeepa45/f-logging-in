@@ -61,10 +61,11 @@ const SignUp = () => {
             fetch('https://pradeepa45.github.io/signup', {
                 method: 'POST',
                 body: JSON.stringify({
-                    firstName : e.target.form[0].value,
+                    "user":
+                    {firstName : e.target.form[0].value,
                     lastName : e.target.form[1].value,
                     email : e.target.form[2].value,
-                    password : e.target.form[3].value
+                    password : e.target.form[3].value}
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8'
